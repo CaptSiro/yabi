@@ -1,0 +1,23 @@
+{
+  "name": "yabi",
+  "version": "1.0.0",
+  "description": "Yet another brainfuck interpreter",
+  "main": "index.js",
+  "scripts": {
+    "run": "tsc && node out/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaptSiro/yabi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CaptSiro/yabi/issues"
+  },
+  "homepage": "https://github.com/CaptSiro/yabi#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
