@@ -4,4 +4,5 @@ export default interface Buffer {
     previous(): void;
     increment(): void;
     decrement(): void;
+    reset(): void;
 }

@@ -3,7 +3,7 @@ import Buffer from "./Buffer";
 
 
 export default class ArrayBuffer implements Buffer {
-    private readonly buffer: number[];
+    private buffer: number[];
     private pointer: number;
 
     constructor() {
@@ -38,5 +38,10 @@ export default class ArrayBuffer implements Buffer {
 
     value(): number {
         return this.buffer[this.pointer];
+    }
+
+    reset(): void {
+        this.buffer = [0];
+        this.pointer = 0;
     }
 }
