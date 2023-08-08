@@ -1,4 +1,5 @@
 export default interface Buffer {
+    set(byte: number): void;
     value(): number;
     next(): void;
     previous(): void;

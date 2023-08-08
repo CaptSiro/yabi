@@ -2,7 +2,7 @@ import Buffer from "./Buffer";
 
 
 
-export default class ArrayBuffer implements Buffer {
+export default class ByteBuffer implements Buffer {
     private buffer: number[];
     private pointer: number;
 
@@ -12,11 +12,25 @@ export default class ArrayBuffer implements Buffer {
     }
 
     decrement(): void {
-        this.buffer[this.pointer]--;
+        const x = this.buffer[this.pointer];
+
+        if (x === 0) {
+            this.buffer[this.pointer] = 255;
+            return;
+        }
+
+        this.buffer[this.pointer] = x - 1;
     }
 
     increment(): void {
-        this.buffer[this.pointer]++;
+        const x = this.buffer[this.pointer];
+
+        if (x === 255) {
+            this.buffer[this.pointer] = 0;
+            return;
+        }
+
+        this.buffer[this.pointer] = x + 1;
     }
 
     next(): void {
@@ -43,5 +57,9 @@ export default class ArrayBuffer implements Buffer {
     reset(): void {
         this.buffer = [0];
         this.pointer = 0;
+    }
+
+    set(byte: number): void {
+        this.buffer[this.pointer] = byte;
     }
 }
