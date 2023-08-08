@@ -4,7 +4,7 @@ import Push from "./output/Push";
 
 
 
-type Instruction = "+" | "-" | "<" | ">" | "[" | "]" | "," | ".";
+type Instruction = "+" | "-" | "<" | ">" | "[" | "]" | "," | "." | "EOP";
 
 
 
@@ -66,7 +66,7 @@ export default class BrainfuckInterpreter {
                     const x = loopStack[loopStack.length - 1];
 
                     if (x === undefined) {
-                        console.error("Syntax error: Unexpected loop enclosing character ']'");
+                        console.error("Syntax error: Unexpected loop enclosing character ']' at " + this.ip);
                         return;
                     }
 
@@ -78,17 +78,20 @@ export default class BrainfuckInterpreter {
                     this.ip = x;
                     break;
                 }
+                case "EOP": {
+                    return;
+                }
             }
         } while(true);
     }
 
-    private nextInstruction(): Instruction | undefined {
+    private nextInstruction(): Instruction {
         do {
             this.ip++;
             const char = this.instructions[this.ip];
 
             if (char === undefined) {
-                return undefined;
+                return "EOP";
             }
 
             if (this.isInstruction(char)) {
