@@ -1,18 +1,21 @@
 import BrainfuckInterpreter from "./BrainfuckInterpreter";
 import ByteBuffer from "./buffer/ByteBuffer";
 import ArrayInput from "./input/ArrayInput";
-import TerminalPush from "./output/TerminalPush";
+import Terminal from "./output/Terminal";
 
 
 
 const bf = new BrainfuckInterpreter(new ByteBuffer());
+const t = new Terminal();
 
-const helloWorld = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]>++++++++[<++++>-]<.>+++++++++++[<++++++++>-]<-.--------.+++.------.--------.[-]>++++++++[<++++>-]<+.[-]++++++++++.";
-
-
+const helloWorld = ">+++++++++[<++++++++>-]<.>+++++++[<++++>-]<+.+++++++..+++.[-]\n" +
+    ">++++++++[<++++>-] <.>+++++++++++[<++++++++>-]<-.--------.+++\n" +
+    ".------.--------.[-]>++++++++[<++++>- ]<+.[-]++++++++++.";
 
 bf.interpret(
     helloWorld,
     new ArrayInput([]),
-    new TerminalPush()
+    t
 );
+
+t.print();
