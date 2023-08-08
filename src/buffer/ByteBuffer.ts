@@ -60,6 +60,6 @@ export default class ByteBuffer implements Buffer {
     }
 
     set(byte: number): void {
-        this.buffer[this.pointer] = byte;
+        this.buffer[this.pointer] = Math.max(0, Math.min(byte, 255));
     }
 }
